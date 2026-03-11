@@ -157,6 +157,14 @@ nav {
 }
 .section-dark .sec-head p { color: rgba(255,255,255,0.5); }
 
+/* ── ABOUT / PROSE ── */
+.prose { max-width: 720px; }
+.prose p {
+  font-size: 0.92rem; line-height: 1.8; margin-bottom: 20px;
+}
+.section-light .prose p { color: var(--muted); }
+.section-dark .prose p { color: rgba(255,255,255,0.55); }
+
 /* ── SERVICE CARDS ── */
 .service-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 56px;
@@ -172,16 +180,30 @@ nav {
 .service-card p {
   font-size: 0.85rem; color: var(--muted); line-height: 1.7;
 }
+.section-dark .service-card h3 { color: var(--white); }
+.section-dark .service-card p { color: rgba(255,255,255,0.5); }
+.section-dark .service-card .card-bar { background: rgba(255,255,255,0.2); }
 
-/* ── WHY FREEDOM ── */
-.why-points { margin-top: 48px; display: flex; flex-direction: column; gap: 36px; max-width: 640px; }
-.why-point { display: flex; gap: 20px; align-items: flex-start; }
-.why-point .dot {
-  flex-shrink: 0; width: 10px; height: 10px; margin-top: 5px;
-  border: 2px solid var(--red); border-radius: 50%;
+/* ── ROLE / COMMITMENT ── */
+.principles {
+  display: flex; gap: 48px; margin-top: 40px; flex-wrap: wrap;
 }
-.why-point h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 6px; }
-.why-point p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+.principle {
+  flex: 1; min-width: 180px; text-align: center;
+}
+.principle .dot {
+  width: 10px; height: 10px; border: 2px solid var(--red);
+  border-radius: 50%; margin: 0 auto 16px;
+}
+.principle h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 8px; }
+.principle p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+/* ── CONTACT ── */
+.contact-info { margin-top: 32px; }
+.contact-info p {
+  font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 2;
+}
+.contact-info a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ── CTA ── */
 .section-red h2 { color: var(--white); margin-bottom: 16px; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; }
@@ -235,87 +257,138 @@ footer {
   <div class="wrap">
     <div class="hero-inner reveal">
       <span class="label">Freedom MedTech Management</span>
-      <h1>The Freedom to <em>Lead</em>.<br>We Handle the Rest.</h1>
-      <p class="hero-desc">Executive management services that let medtech companies focus on growth while we handle the operational complexity.</p>
-      <a href="#contact" class="btn btn-red">Start the Conversation</a>
+      <h1>Strategic &amp; Executive <em>Management</em> for the Modern MedTech Ecosystem</h1>
+      <p class="hero-desc"></p>
+      <a href="#contact" class="btn btn-red">Get in Touch</a>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- WHO WE ARE -->
 <section class="section-light">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="label">What We Do</span>
-      <h2>Management That<br>Moves the Needle</h2>
+      <span class="label">Who We Are</span>
+      <h2>The Management Engine<br>Behind Your Growth</h2>
       <div class="bar bar-56 bar-red"></div>
+    </div>
+    <div class="prose reveal">
+      <p>Freedom MedTech Management LLC (&ldquo;Freedom&rdquo;) is a Puerto Rico&ndash;based management organization that delivers comprehensive executive leadership, full operational control, and strategic direction to medical-technology distribution and service companies across the United States.</p>
+      <p>Freedom functions as the corporate management engine behind its partners&mdash;responsible for day-to-day decision-making, performance execution, and long-term growth strategy&mdash;providing the structure, accountability, and leadership capacity of an internal executive team.</p>
+      <p>Operating under Puerto Rico&rsquo;s Act 60 Export Services Decree and in compliance with U.S. Internal Revenue Code Section 937 requirements, Freedom delivers the strategic direction, financial governance, and business infrastructure that enable its partners to scale efficiently while maintaining operational excellence and regulatory compliance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What We Do</span>
+      <h2>Comprehensive Strategic &amp;<br>Executive Management Services</h2>
+      <div class="bar bar-64 bar-white"></div>
+      <p>Freedom provides comprehensive Strategic &amp; Executive Management Services designed to optimize performance, strengthen vendor relationships, and ensure sustainable growth for its client companies.</p>
     </div>
     <div class="service-grid">
       <div class="service-card reveal">
         <div class="card-bar"></div>
-        <h3>Strategic Consulting</h3>
-        <p>Executive-level guidance for medtech distributors and manufacturers navigating growth and complexity.</p>
+        <h3>Corporate Strategy &amp; Planning</h3>
+        <p>Develop, implement, and periodically update long-term corporate strategy, business plans, and commercial objectives.</p>
       </div>
       <div class="service-card reveal">
         <div class="card-bar"></div>
-        <h3>Operational Leadership</h3>
-        <p>Hands-on management support that keeps your business running at peak performance.</p>
+        <h3>Vendor &amp; Manufacturer Management</h3>
+        <p>Negotiate, execute, and manage vendor, supplier, and manufacturer agreements, including pricing arrangements and rebate programs.</p>
       </div>
       <div class="service-card reveal">
         <div class="card-bar"></div>
-        <h3>Supply Chain Strategy</h3>
-        <p>Optimization across procurement, logistics, and vendor relationships to protect your margins.</p>
+        <h3>Key Account Business Development &amp; Expansion</h3>
+        <p>Serve as executive sponsor and lead business development for key accounts, including stakeholder mapping, pipeline management, account conversions, and pricing negotiations within approved parameters.</p>
       </div>
       <div class="service-card reveal">
         <div class="card-bar"></div>
-        <h3>Growth &amp; Compliance</h3>
-        <p>Market expansion strategy paired with regulatory guidance to scale with confidence.</p>
+        <h3>Sales Execution Oversight</h3>
+        <p>Design and implement sales strategies, establish territory quotas, monitor KPIs, and supervise overall salesforce performance.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="card-bar"></div>
+        <h3>Operational Governance</h3>
+        <p>Establish inventory policies, logistics and distribution guidelines, compliance programs, and risk management protocols.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="card-bar"></div>
+        <h3>Technology &amp; Process Development</h3>
+        <p>Design, implement, and maintain proprietary systems and platforms to enhance operational efficiency and data capture.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="card-bar"></div>
+        <h3>Performance Monitoring &amp; Reporting</h3>
+        <p>Deliver quarterly performance reports, vendor scorecards, and financial analyses to the client&rsquo;s board or designated officers.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="card-bar"></div>
+        <h3>Risk Management</h3>
+        <p>Identify, assess, and mitigate strategic, operational, reputational, and regulatory risks associated with commercialization activities.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY FREEDOM -->
+<!-- OUR ROLE -->
+<section class="section-light">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Our Role</span>
+      <h2>Strategic &amp; Operational<br>Partnership</h2>
+      <div class="bar bar-56 bar-red"></div>
+    </div>
+    <div class="prose reveal">
+      <p>Freedom MedTech Management serves as a strategic and operational partner to select MedTech companies&mdash;providing executive leadership, financial oversight, and scalable infrastructure that enable its clients to focus on growth, innovation, and customer engagement.</p>
+      <p>By centralizing corporate, operational, and administrative functions, Freedom ensures efficiency, transparency, and sustainable expansion across diverse markets.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUR COMMITMENT -->
 <section class="section-dark">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="label">Why Freedom</span>
-      <h2>Built for Operators<br>Who Want More</h2>
+      <span class="label">Our Commitment</span>
+      <h2>Integrity. Discipline.<br>Execution.</h2>
       <div class="bar bar-64 bar-white"></div>
     </div>
-    <div class="why-points">
-      <div class="why-point reveal">
+    <div class="prose reveal">
+      <p>We believe that great strategy is defined by clarity of purpose, consistent performance, and measurable results. Through sound management and transparent governance, we empower our partners to operate freely&mdash;focusing on their strengths while we handle the complexity.</p>
+    </div>
+    <div class="principles reveal">
+      <div class="principle">
         <div class="dot"></div>
-        <div>
-          <h4>Freedom from Operational Burden</h4>
-          <p>We absorb the weight of day-to-day management so leadership can focus on vision, deals, and strategy.</p>
-        </div>
+        <h4>Integrity</h4>
+        <p>Transparent governance and honest partnership at every level.</p>
       </div>
-      <div class="why-point reveal">
+      <div class="principle">
         <div class="dot"></div>
-        <div>
-          <h4>MedTech-Native Expertise</h4>
-          <p>We know the industry inside out — regulatory landscape, distribution networks, and what it takes to win.</p>
-        </div>
+        <h4>Discipline</h4>
+        <p>Consistent performance driven by process and accountability.</p>
       </div>
-      <div class="why-point reveal">
+      <div class="principle">
         <div class="dot"></div>
-        <div>
-          <h4>Executive-Caliber Partnership</h4>
-          <p>Not consultants on the sideline. We embed at the leadership level and operate like your team.</p>
-        </div>
+        <h4>Execution</h4>
+        <p>Measurable results that move the business forward.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CONTACT -->
 <section class="section-red" id="contact">
   <div class="wrap">
     <div class="reveal">
-      <h2>Ready to Talk Strategy?</h2>
-      <p>Let's discuss how Freedom can accelerate your medtech business.</p>
-      <a href="#" class="btn btn-white">Contact Us</a>
+      <h2>Get in Touch</h2>
+      <p>Freedom MedTech Management LLC<br>San Juan, Puerto Rico</p>
+      <div class="contact-info">
+        <p><a href="mailto:info@freedommedtechmanagement.com">info@freedommedtechmanagement.com</a></p>
+      </div>
     </div>
   </div>
 </section>

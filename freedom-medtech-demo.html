@@ -160,7 +160,7 @@ nav {
 /* ── ABOUT / PROSE ── */
 .prose { max-width: 720px; }
 .prose p {
-  font-size: 0.92rem; line-height: 1.8; margin-bottom: 20px;
+  font-size: 18px; line-height: 1.8; margin-bottom: 20px;
 }
 .section-light .prose p { color: var(--muted); }
 .section-dark .prose p { color: rgba(255,255,255,0.55); }
@@ -174,21 +174,21 @@ nav {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: var(--radius);
-  padding: 36px 32px;
+  padding: 40px 36px;
   transition: var(--transition);
+  text-align: center;
 }
 .service-card:hover {
   background: rgba(255,255,255,0.06);
   border-color: rgba(180,37,60,0.3);
   transform: translateY(-2px);
 }
-.service-card { text-align: center; }
+.service-card h3 {
+  font-size: 1.1rem; font-weight: 700; margin-bottom: 0; letter-spacing: -0.01em;
+}
 .service-card .card-bar {
   width: 40px; height: 3px; background: var(--red);
-  border-radius: 2px; margin: 12px auto 0;
-}
-.service-card h3 {
-  font-size: 1rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em;
+  border-radius: 2px; margin: 14px auto 16px;
 }
 .service-card p {
   font-size: 0.85rem; color: var(--muted); line-height: 1.75;

@@ -17,7 +17,7 @@
   --border: #E5E5E5;
   --muted: #737373;
   --radius: 16px;
-  --transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -36,13 +36,13 @@ body { font-family: 'Montserrat', sans-serif; background: var(--white); color: v
   transition: var(--transition); white-space: nowrap;
 }
 .btn-red { background: var(--red); color: var(--white); border-color: var(--red); }
-.btn-red:hover { background: var(--white); color: var(--red); }
+.btn-red:hover { background: var(--white); color: var(--red); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(180,37,60,0.3); }
 .btn-black { background: var(--black); color: var(--white); border-color: var(--black); }
-.btn-black:hover { background: var(--white); color: var(--black); }
+.btn-black:hover { background: var(--white); color: var(--black); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 .btn-white { background: var(--white); color: var(--deep-red); border-color: var(--white); }
-.btn-white:hover { background: transparent; color: var(--white); }
+.btn-white:hover { background: transparent; color: var(--white); transform: translateY(-2px); }
 .btn-ghost { background: transparent; color: var(--white); border-color: var(--white); }
-.btn-ghost:hover { background: var(--white); color: var(--black); }
+.btn-ghost:hover { background: var(--white); color: var(--black); transform: translateY(-2px); }
 
 .bar { height: 4px; border-radius: 2px; }
 .bar-56 { width: 56px; }
@@ -58,17 +58,41 @@ body { font-family: 'Montserrat', sans-serif; background: var(--white); color: v
 
 .reveal {
   opacity: 0; transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Staggered card reveals */
+.service-card.reveal:nth-child(1) { transition-delay: 0s; }
+.service-card.reveal:nth-child(2) { transition-delay: 0.08s; }
+.service-card.reveal:nth-child(3) { transition-delay: 0.16s; }
+.service-card.reveal:nth-child(4) { transition-delay: 0.24s; }
+.service-card.reveal:nth-child(5) { transition-delay: 0.32s; }
+.service-card.reveal:nth-child(6) { transition-delay: 0.40s; }
+.service-card.reveal:nth-child(7) { transition-delay: 0.48s; }
+.service-card.reveal:nth-child(8) { transition-delay: 0.56s; }
+
+/* Staggered hero entrance */
+.hero-inner .label { opacity: 0; transform: translateY(24px); animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
+.hero-inner h1 { opacity: 0; transform: translateY(24px); animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+.hero-inner .hero-desc { opacity: 0; transform: translateY(24px); animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
+.hero-inner .btn { opacity: 0; transform: translateY(24px); animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; }
+@keyframes heroIn {
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: 72px; display: flex; align-items: center;
-  background: rgba(10,10,10,0.95); backdrop-filter: blur(16px);
+  background: rgba(10,10,10,0.85); backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
   padding: 0 clamp(24px, 5vw, 64px);
+  transition: background 0.4s, box-shadow 0.4s;
+}
+nav.scrolled {
+  background: rgba(10,10,10,0.98);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.4);
 }
 .nav-inner {
   width: 100%; max-width: 1200px; margin: 0 auto;
@@ -90,7 +114,7 @@ nav {
   font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
   text-decoration: none; cursor: pointer; transition: var(--transition);
 }
-.nav-cta:hover { background: var(--red); }
+.nav-cta:hover { background: var(--red); box-shadow: 0 4px 20px rgba(180,37,60,0.3); }
 
 /* ── HERO ── */
 .hero {
@@ -100,15 +124,23 @@ nav {
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(180,37,60,0.05) 1px, transparent 1px);
-  background-size: 18px 18px; pointer-events: none;
+  background-image: radial-gradient(rgba(180,37,60,0.04) 1px, transparent 1px);
+  background-size: 20px 20px; pointer-events: none;
 }
 .hero::after {
   content: ''; position: absolute;
-  width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(150,35,57,0.14) 0%, transparent 65%);
+  width: 900px; height: 900px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(150,35,57,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(180,37,60,0.10) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(100,20,40,0.08) 0%, transparent 70%);
   top: 50%; left: 50%; transform: translate(-50%, -50%);
   pointer-events: none;
+  animation: heroPulse 8s ease-in-out infinite alternate;
+}
+@keyframes heroPulse {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
 }
 .hero-inner { position: relative; z-index: 1; max-width: 800px; }
 .hero .label { margin-bottom: 28px; }
@@ -123,10 +155,24 @@ nav {
 }
 
 /* ── SECTIONS ── */
-.section-light { background: var(--white); color: var(--black); padding: 100px 0; }
+.section-light { background: var(--white); color: var(--black); padding: 100px 0; position: relative; }
 .section-dark {
   background: var(--black); color: var(--white); padding: 100px 0;
   position: relative;
+}
+/* Gradient bleeds between sections */
+.section-light + .section-dark::after,
+.section-dark + .section-light::before {
+  content: ''; position: absolute; left: 0; right: 0; height: 120px;
+  pointer-events: none; z-index: 0;
+}
+.section-light + .section-dark::after {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0) 0%, transparent 100%);
+}
+.section-dark + .section-light::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.03) 0%, transparent 100%);
 }
 .section-dark::before {
   content: ''; position: absolute; inset: 0;
@@ -136,12 +182,24 @@ nav {
 .section-dark .wrap { position: relative; z-index: 1; }
 .section-red {
   background: var(--deep-red); padding: 80px 0;
-  text-align: center; position: relative;
+  text-align: center; position: relative; overflow: hidden;
 }
 .section-red::before {
   content: ''; position: absolute; inset: 0;
   background-image: radial-gradient(rgba(0,0,0,0.08) 1.5px, transparent 1.5px);
   background-size: 18px 18px; pointer-events: none;
+}
+.section-red::after {
+  content: ''; position: absolute;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: ctaGlow 6s ease-in-out infinite alternate;
+}
+@keyframes ctaGlow {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 }
 .section-red .wrap { position: relative; z-index: 1; }
 
@@ -181,7 +239,8 @@ nav {
 .service-card:hover {
   background: rgba(255,255,255,0.06);
   border-color: rgba(180,37,60,0.3);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(180,37,60,0.08), 0 0 0 1px rgba(180,37,60,0.1);
 }
 .service-card h3 {
   font-size: 1.1rem; font-weight: 700; margin-bottom: 0; letter-spacing: -0.01em;
@@ -206,16 +265,33 @@ nav {
 .principle .dot {
   width: 10px; height: 10px; border: 2px solid var(--red);
   border-radius: 50%; margin: 0 auto 16px;
+  animation: dotPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(180,37,60,0);
+}
+.principle:nth-child(2) .dot { animation-delay: 0.5s; }
+.principle:nth-child(3) .dot { animation-delay: 1s; }
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(180,37,60,0); }
+  50% { box-shadow: 0 0 0 6px rgba(180,37,60,0.15); }
 }
 .principle h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 8px; }
 .principle p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+.principle { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.principles.visible .principle:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.principles.visible .principle:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+.principles.visible .principle:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
 
 /* ── CONTACT ── */
 .contact-info { margin-top: 32px; }
 .contact-info p {
   font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 2;
 }
-.contact-info a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+.contact-info a {
+  color: var(--white); text-decoration: none;
+  background: linear-gradient(var(--white), var(--white)) no-repeat left bottom / 100% 1px;
+  padding-bottom: 2px; transition: background-size 0.3s;
+}
+.contact-info a:hover { background-size: 0% 1px; }
 
 /* ── CTA ── */
 .section-red h2 { color: var(--white); margin-bottom: 16px; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; }
@@ -225,6 +301,12 @@ nav {
 footer {
   background: var(--black); padding: 40px 0;
   border-top: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+footer::before {
+  content: ''; position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%); width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
 }
 .foot-inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -268,6 +350,7 @@ footer {
     <div class="hero-inner reveal">
       <span class="label">Freedom MedTech Management</span>
       <h1>Strategic &amp; Executive <em>Management</em><br>for the<br>Modern MedTech Ecosystem</h1>
+      <p class="hero-desc">Executive leadership, financial governance, and scalable infrastructure&mdash;so you can focus on growth.</p>
       <a href="#contact" class="btn btn-red">Get in Touch</a>
     </div>
   </div>
@@ -415,12 +498,26 @@ footer {
 </footer>
 
 <script>
+/* Scroll reveals */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* Nav scroll effect */
+const nav = document.querySelector('nav');
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
 </script>
 </body>
 </html>

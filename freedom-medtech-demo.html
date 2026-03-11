@@ -353,12 +353,13 @@ footer::before {
 </style>
 </head>
 <body>
+<script>if(history.scrollRestoration)history.scrollRestoration='manual';window.scrollTo(0,0);</script>
 
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <img src="finallogo.png" alt="Freedom MedTech" class="nav-logo-mark">
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><img src="finallogo.png" alt="Freedom MedTech" class="nav-logo-mark"></a>
     </div>
     <a href="#contact" class="nav-cta">Get in Touch</a>
   </div>

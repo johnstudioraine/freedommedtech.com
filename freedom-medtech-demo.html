@@ -54,18 +54,10 @@ body {
 }
 .btn-red { background: var(--red); color: var(--white); border-color: var(--red); }
 .btn-red:hover { background: var(--white); color: var(--red); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(180,37,60,0.3); }
-.btn-black { background: var(--black); color: var(--white); border-color: var(--black); }
-.btn-black:hover { background: var(--white); color: var(--black); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-.btn-white { background: var(--white); color: var(--deep-red); border-color: var(--white); }
-.btn-white:hover { background: transparent; color: var(--white); transform: translateY(-2px); }
-.btn-ghost { background: transparent; color: var(--white); border-color: var(--white); }
-.btn-ghost:hover { background: var(--white); color: var(--black); transform: translateY(-2px); }
 
 .bar { height: 4px; border-radius: 2px; }
 .bar-56 { width: 56px; }
-.bar-64 { width: 64px; }
 .bar-red { background: var(--red); }
-.bar-white { background: var(--white); }
 
 .label {
   font-size: 0.75rem; font-weight: 700;
@@ -120,12 +112,6 @@ nav.scrolled {
 }
 .nav-left { display: flex; align-items: center; gap: 24px; }
 .nav-logo-mark { width: 128px; height: auto; }
-.nav-brand {
-  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--white); text-decoration: none;
-}
-.nav-brand span { color: var(--muted); font-weight: 500; }
-.nav-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.12); }
 .nav-cta {
   display: inline-flex; align-items: center; justify-content: center;
   height: 44px; padding: 0 32px; border: 2px solid var(--red);
@@ -240,8 +226,9 @@ nav.scrolled {
 /* ── ABOUT / PROSE ── */
 .prose { max-width: 720px; text-align: center; }
 .prose p {
-  font-size: 1.1rem; line-height: 1.9; margin-bottom: 32px;
+  font-size: 1.1rem; line-height: 1.9;
 }
+.prose p:last-child { margin-bottom: 0; }
 .section-light .prose p { color: var(--muted); }
 .section-dark .prose p { color: rgba(255,255,255,0.55); }
 
@@ -274,7 +261,7 @@ nav.scrolled {
 .service-card p {
   font-size: 1.05rem; color: var(--muted); line-height: 1.75;
 }
-.service-card svg { opacity: 0.7; transition: opacity 0.3s; }
+.service-card svg { display: block; margin: 0 auto 20px; opacity: 0.7; transition: opacity 0.3s; }
 .service-card:hover svg { opacity: 1; }
 .section-dark .service-card h3 { color: var(--white); }
 .section-dark .service-card p { color: rgba(255,255,255,0.55); }
@@ -291,8 +278,12 @@ nav.scrolled {
 .principle svg {
   display: block; margin: 0 auto 24px; opacity: 0.7;
 }
-.principle h4 { font-size: 1.35rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; color: var(--white); }
-.principle p { font-size: 1.05rem; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 280px; margin: 0 auto; }
+.principle h4 { font-size: 1.35rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
+.principle p { font-size: 1.05rem; line-height: 1.75; max-width: 280px; margin: 0 auto; }
+.section-dark .principle h4 { color: var(--white); }
+.section-dark .principle p { color: rgba(255,255,255,0.5); }
+.section-light .principle h4 { color: var(--black); }
+.section-light .principle p { color: var(--muted); }
 .principle { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
 .principles.visible .principle:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
 .principles.visible .principle:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
@@ -316,7 +307,7 @@ nav.scrolled {
 .section-dark .bar { background: var(--white); }
 .section-red .label { color: var(--white); }
 .section-red .bar { background: var(--white); }
-.section-red h2 { color: var(--white); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.025em; }
+.section-red h2 { color: var(--white); }
 .section-red p { color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.8; }
 
 /* ── FOOTER ── */
@@ -415,7 +406,7 @@ footer::after {
   .sec-head { margin-bottom: 56px; }
   .prose p { font-size: 1.05rem; }
   .principles { grid-template-columns: 1fr; gap: 40px; max-width: 400px; }
-  .highlights { gap: 32px; }
+  .highlights { grid-template-columns: 1fr; gap: 40px; max-width: 400px; margin-left: auto; margin-right: auto; }
   .nav-logo-mark { width: 111px; height: auto; }
   .foot-logo { width: 111px; height: auto; }
 }
@@ -449,7 +440,6 @@ footer::after {
   }
   .nav-inner { gap: 12px; }
   .nav-logo-mark { width: 90px; height: auto; }
-  .nav-brand { font-size: 0.7rem; letter-spacing: 0.1em; }
   .nav-cta {
     height: 40px; padding: 0 20px;
     font-size: 0.65rem; letter-spacing: 0.08em;
@@ -513,7 +503,6 @@ footer::after {
   .principle p { font-size: 0.92rem; line-height: 1.75; }
 
   /* CTA / Contact — inviting, not squeezed */
-  .section-red h2 { font-size: clamp(1.4rem, 5.5vw, 2rem); }
   .section-red p { font-size: 1rem; margin-bottom: 28px; line-height: 1.7; }
   .contact-info { margin-top: 28px; }
   .contact-info p { font-size: 0.95rem; }
@@ -642,49 +631,49 @@ window.addEventListener('load',function(){
     </div>
     <div class="service-grid">
       <div class="service-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 20px;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         <h3>Corporate Strategy &amp; Planning</h3>
         <div class="card-bar"></div>
         <p>Develop, implement, and periodically update long-term corporate strategy, business plans, and commercial objectives.</p>
       </div>
       <div class="service-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 20px;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         <h3>Vendor &amp; Manufacturer Management</h3>
         <div class="card-bar"></div>
         <p>Negotiate, execute, and manage vendor, supplier, and manufacturer agreements, including pricing arrangements and rebate programs.</p>
       </div>
       <div class="service-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 20px;"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         <h3>Key Account Business Development &amp; Expansion</h3>
         <div class="card-bar"></div>
         <p>Serve as executive sponsor and lead business development for key accounts, including stakeholder mapping, pipeline management, account conversions, and pricing negotiations within approved parameters.</p>
       </div>
       <div class="service-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 20px;"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         <h3>Sales Execution Oversight</h3>
         <div class="card-bar"></div>
         <p>Design and implement sales strategies, establish territory quotas, monitor KPIs, and supervise overall salesforce performance.</p>
       </div>
       <div class="service-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 20px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <h3>Operational Governance</h3>
         <div class="card-bar"></div>
         <p>Establish inventory policies, logistics and distribution guidelines, compliance programs, and risk management protocols.</p>
       </div>
       <div class="service-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 20px;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         <h3>Technology &amp; Process Development</h3>
         <div class="card-bar"></div>
         <p>Design, implement, and maintain proprietary systems and platforms to enhance operational efficiency and data capture.</p>
       </div>
       <div class="service-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 20px;"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
         <h3>Performance Monitoring &amp; Reporting</h3>
         <div class="card-bar"></div>
         <p>Deliver quarterly performance reports, vendor scorecards, and financial analyses to the client&rsquo;s board or designated officers.</p>
       </div>
       <div class="service-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 20px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <h3>Risk Management</h3>
         <div class="card-bar"></div>
         <p>Identify, assess, and mitigate strategic, operational, reputational, and regulatory risks associated with commercialization activities.</p>
@@ -695,7 +684,7 @@ window.addEventListener('load',function(){
 <div class="section-edge"></div>
 
 <!-- OUR COMMITMENT -->
-<section class="section-dark">
+<section class="section-light">
   <div class="wrap" style="text-align:center;">
     <div class="sec-head reveal" style="text-align:center;">
       <span class="label">Our Commitment</span>
@@ -732,13 +721,13 @@ window.addEventListener('load',function(){
     <div class="sec-head reveal" style="text-align:center;">
       <span class="label">Contact</span>
       <h2>Let&rsquo;s Build <span class="br"></span>Something Together</h2>
-      <div class="bar bar-56" style="margin-left:auto;margin-right:auto;"></div>
+      <div class="bar bar-56 bar-red" style="margin-left:auto;margin-right:auto;"></div>
     </div>
     <div class="reveal" style="text-align:center;">
-      <p>Freedom MedTech Management LLC<br>San Juan, Puerto Rico</p>
+      <p style="margin-bottom:0;">Freedom MedTech Management LLC<br>San Juan, Puerto Rico</p>
       <div class="contact-info">
         <p>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:8px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:8px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <a href="mailto:info@freedommedtechmanagement.com">info@freedommedtechmanagement.com</a>
         </p>
       </div>

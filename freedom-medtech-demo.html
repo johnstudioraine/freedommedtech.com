@@ -356,7 +356,11 @@ footer::after {
   max-width: 780px; margin: 64px auto 0; text-align: left;
 }
 .highlight {
-  border-top: 3px solid var(--red); padding-top: 24px;
+  padding-top: 24px; position: relative;
+}
+.highlight::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 48px; height: 3px; background: var(--red); border-radius: 2px;
 }
 .highlight svg {
   display: block; margin-bottom: 16px; opacity: 0.8;

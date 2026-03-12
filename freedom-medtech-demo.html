@@ -312,8 +312,10 @@ nav.scrolled {
 .contact-info a { white-space: nowrap; }
 
 /* ── CTA ── */
-.section-red h2 { color: var(--white); margin-bottom: 24px; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.025em; }
-.section-red p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 48px; line-height: 1.8; }
+.section-red .label { color: rgba(255,255,255,0.5); }
+.section-red .bar { background: rgba(255,255,255,0.3); }
+.section-red h2 { color: var(--white); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.025em; }
+.section-red p { color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.8; }
 
 /* ── FOOTER ── */
 footer {
@@ -725,14 +727,16 @@ window.addEventListener('load',function(){
 <!-- CONTACT -->
 <section class="section-red" id="contact">
   <div class="wrap">
-    <div class="reveal" style="max-width:600px;margin:0 auto;">
-      <span class="label" style="margin-bottom:24px;">Contact</span>
+    <div class="sec-head reveal" style="text-align:center;">
+      <span class="label">Contact</span>
       <h2>Let&rsquo;s Build Something Together</h2>
-      <div class="bar bar-56 bar-red" style="margin:28px auto 36px;"></div>
+      <div class="bar bar-56" style="margin-left:auto;margin-right:auto;"></div>
+    </div>
+    <div class="reveal" style="text-align:center;">
       <p>Freedom MedTech Management LLC<br>San Juan, Puerto Rico</p>
       <div class="contact-info">
-        <p style="margin-top:8px;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:8px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <p>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:8px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <a href="mailto:info@freedommedtechmanagement.com">info@freedommedtechmanagement.com</a>
         </p>
       </div>

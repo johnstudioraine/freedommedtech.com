@@ -177,7 +177,7 @@ nav.scrolled {
 }
 .section-light::before {
   content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(180,37,60,0.18) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(180,37,60,0.07) 1px, transparent 1px);
   background-size: 20px 20px; pointer-events: none; z-index: 0;
 }
 .section-light::after {
@@ -211,7 +211,7 @@ nav.scrolled {
 }
 .section-red::before {
   content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(180,37,60,0.18) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(180,37,60,0.10) 1px, transparent 1px);
   background-size: 20px 20px; pointer-events: none;
 }
 .section-red::after {
@@ -387,6 +387,64 @@ footer::after {
 }
 .foot-right img { height: 16px; width: auto; display: inline-block; vertical-align: middle; opacity: 0.5; margin-left: 4px; }
 
+/* ── SECTION EDGES ── */
+.section-edge {
+  height: 1px; position: relative; overflow: visible;
+}
+.section-edge::after {
+  content: ''; position: absolute; left: 50%; top: 0;
+  transform: translateX(-50%); width: min(600px, 80%); height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180,37,60,0.25), transparent);
+}
+
+/* ── STAT ROW ── */
+.stat-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  max-width: 720px; margin: 64px auto 0; text-align: center;
+}
+.stat { }
+.stat-number {
+  font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800;
+  color: var(--red); letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 0.78rem; font-weight: 600; color: var(--muted);
+  letter-spacing: 0.04em; line-height: 1.5;
+}
+
+/* ── TWO-COL LAYOUT ── */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+.two-col .col-text { }
+.two-col .col-text p {
+  font-size: 1.05rem; line-height: 1.85; color: var(--muted); margin-bottom: 24px;
+}
+.two-col .col-text p:last-child { margin-bottom: 0; }
+.two-col .col-accent {
+  display: flex; flex-direction: column; gap: 24px;
+}
+.accent-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.accent-card:hover {
+  border-color: rgba(180,37,60,0.25);
+  box-shadow: 0 8px 32px rgba(180,37,60,0.06);
+}
+.accent-card h4 {
+  font-size: 0.95rem; font-weight: 700; color: var(--black);
+  margin-bottom: 6px;
+}
+.accent-card p {
+  font-size: 0.88rem; color: var(--muted); line-height: 1.7;
+}
+
 /* ── RESPONSIVE ── */
 
 /* Disable hover lift on touch devices */
@@ -406,7 +464,9 @@ footer::after {
   .hero-desc { font-size: 1rem; max-width: 480px; }
   .sec-head { margin-bottom: 56px; }
   .prose p { font-size: 1.05rem; }
-  .principles { gap: 48px; }
+  .principles { gap: 24px; }
+  .two-col { gap: 56px; }
+  .stat-row { gap: 24px; }
   .nav-logo-mark { height: 64px; }
   .foot-logo { height: 72px; }
 }
@@ -419,9 +479,11 @@ footer::after {
   .hero { padding: 120px 0 80px; }
   .hero h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); }
   .sec-head h2 { font-size: clamp(1.8rem, 4.5vw, 2.4rem); }
-  .principles { gap: 44px; }
+  .principles { grid-template-columns: 1fr; gap: 20px; }
+  .principle { padding: 44px 32px 40px; }
   .principle h4 { font-size: 1.05rem; }
   .principle p { font-size: 0.92rem; }
+  .two-col { grid-template-columns: 1fr; gap: 48px; }
   footer { padding: 52px 0; }
   .foot-inner { flex-direction: column; text-align: center; gap: 16px; }
   .foot-left { justify-content: center; }
@@ -496,8 +558,8 @@ footer::after {
   .service-card .card-bar { margin: 14px auto 16px; }
 
   /* Principles — stacked with room to breathe */
-  .principles { flex-direction: column; gap: 40px; margin-top: 44px; }
-  .principle { min-width: unset; }
+  .principles { grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
+  .principle { padding: 40px 28px 36px; }
   .principle h4 { font-size: 1.05rem; margin-bottom: 12px; }
   .principle p { font-size: 0.92rem; line-height: 1.75; max-width: 320px; }
 
@@ -513,6 +575,12 @@ footer::after {
   .foot-left { justify-content: center; }
   .foot-logo { height: 52px; }
   .foot-right { font-size: 0.75rem; }
+
+  /* Two-col → stacked on mobile */
+  .two-col { grid-template-columns: 1fr; gap: 48px; }
+  .stat-row { grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  .stat-number { font-size: clamp(1.6rem, 5vw, 2rem); }
+  .stat-label { font-size: 0.72rem; }
 
   /* Card stagger — snappy for single column */
   .service-card.reveal:nth-child(n) { transition-delay: 0s; }
@@ -583,6 +651,7 @@ window.addEventListener('load',function(){
     </div>
   </div>
 </section>
+<div class="section-edge"></div>
 
 <!-- WHO WE ARE -->
 <section class="section-light">
@@ -597,8 +666,23 @@ window.addEventListener('load',function(){
       <p>Freedom functions as the corporate management engine behind its partners&mdash;responsible for day-to-day decision-making, performance execution, and long-term growth strategy&mdash;providing the structure, accountability, and leadership capacity of an internal executive team.</p>
       <p>Operating under Puerto Rico&rsquo;s Act 60 Export Services Decree and in compliance with U.S. Internal Revenue Code Section 937 requirements, Freedom delivers the strategic direction, financial governance, and business infrastructure that enable its partners to scale efficiently while maintaining operational excellence and regulatory compliance.</p>
     </div>
+    <div class="stat-row reveal">
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Operational Control<br>&amp; Execution</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">Act 60</div>
+        <div class="stat-label">Export Services<br>Compliant</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">U.S.</div>
+        <div class="stat-label">Nationwide MedTech<br>Coverage</div>
+      </div>
+    </div>
   </div>
 </section>
+<div class="section-edge"></div>
 
 <!-- WHAT WE DO -->
 <section class="section-dark">
@@ -661,21 +745,37 @@ window.addEventListener('load',function(){
     </div>
   </div>
 </section>
+<div class="section-edge"></div>
 
 <!-- OUR ROLE -->
 <section class="section-light">
   <div class="wrap">
-    <div class="sec-head reveal" style="text-align:center;">
-      <span class="label">Our Role</span>
-      <h2>Strategic &amp; Operational <span class="br"></span>Partnership</h2>
-      <div class="bar bar-56 bar-red" style="margin-left:auto;margin-right:auto;"></div>
-    </div>
-    <div class="prose reveal" style="margin:0 auto;text-align:center;">
-      <p>Freedom MedTech Management serves as a strategic and operational partner to select MedTech companies&mdash;providing executive leadership, financial oversight, and scalable infrastructure that enable its clients to focus on growth, innovation, and customer engagement.</p>
-      <p>By centralizing corporate, operational, and administrative functions, Freedom ensures efficiency, transparency, and sustainable expansion across diverse markets.</p>
+    <div class="two-col reveal">
+      <div class="col-text">
+        <span class="label">Our Role</span>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;line-height:1.15;letter-spacing:-0.025em;margin:20px 0 32px;color:var(--black);">Strategic &amp; Operational Partnership</h2>
+        <div class="bar bar-56 bar-red" style="margin-bottom:36px;"></div>
+        <p>Freedom MedTech Management serves as a strategic and operational partner to select MedTech companies&mdash;providing executive leadership, financial oversight, and scalable infrastructure that enable its clients to focus on growth, innovation, and customer engagement.</p>
+        <p>By centralizing corporate, operational, and administrative functions, Freedom ensures efficiency, transparency, and sustainable expansion across diverse markets.</p>
+      </div>
+      <div class="col-accent">
+        <div class="accent-card">
+          <h4>Executive Leadership</h4>
+          <p>Day-to-day decision-making, performance execution, and long-term growth strategy at the C-suite level.</p>
+        </div>
+        <div class="accent-card">
+          <h4>Financial Governance</h4>
+          <p>Full financial oversight, budgeting, and compliance ensuring transparent and accountable operations.</p>
+        </div>
+        <div class="accent-card">
+          <h4>Scalable Infrastructure</h4>
+          <p>Systems, processes, and technology that grow with the business&mdash;from startup to enterprise scale.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+<div class="section-edge"></div>
 
 <!-- OUR COMMITMENT -->
 <section class="section-dark">
@@ -707,6 +807,7 @@ window.addEventListener('load',function(){
     </div>
   </div>
 </section>
+<div class="section-edge"></div>
 
 <!-- CONTACT -->
 <section class="section-red" id="contact">
@@ -728,7 +829,10 @@ window.addEventListener('load',function(){
       <div class="foot-left">
         <img src="finallogo.png" alt="Freedom MedTech" class="foot-logo">
       </div>
-      <span class="foot-right">&copy; 2026 Freedom MedTech Management</span>
+      <div class="foot-right" style="text-align:right;">
+        <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px;">Strategic MedTech Management</div>
+        <span>&copy; 2026 Freedom MedTech Management LLC &middot; San Juan, PR</span>
+      </div>
     </div>
   </div>
 </footer>

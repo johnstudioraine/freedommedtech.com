@@ -104,13 +104,10 @@ body {
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: calc(104px + env(safe-area-inset-top, 0px));
-  padding-top: env(safe-area-inset-top, 0px);
+  padding: calc(16px + env(safe-area-inset-top, 0px)) max(clamp(24px, 5vw, 64px), env(safe-area-inset-right, 0px)) 16px max(clamp(24px, 5vw, 64px), env(safe-area-inset-left, 0px));
   display: flex; align-items: center;
   background: rgba(10,10,10,0.85); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding-left: max(clamp(24px, 5vw, 64px), env(safe-area-inset-left, 0px));
-  padding-right: max(clamp(24px, 5vw, 64px), env(safe-area-inset-right, 0px));
   transition: background 0.4s, box-shadow 0.4s;
 }
 nav.scrolled {
@@ -444,8 +441,7 @@ footer::after {
 
   /* Nav — 44px minimum touch targets (Apple HIG) */
   nav {
-    height: calc(88px + env(safe-area-inset-top, 0px));
-    padding: 0 28px; padding-top: env(safe-area-inset-top, 0px);
+    padding: calc(12px + env(safe-area-inset-top, 0px)) 28px 12px;
   }
   .nav-inner { gap: 12px; }
   .nav-logo-mark { width: 120px; height: auto; }
